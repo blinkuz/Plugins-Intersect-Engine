@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Rare_Item_Drop_Notifier</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Intersect-Engine\Blinkuz.Plugins.Tools\Blinkuz.Plugins.Tools.csproj" />
+      <ProjectReference Include="..\..\Intersect-Engine\Intersect.Server.Core\Intersect.Server.Core.csproj" />
+      <ProjectReference Include="..\..\Intersect-Engine\Intersect.Server.Framework\Intersect.Server.Framework.csproj" />
+    </ItemGroup>
+
+</Project>
