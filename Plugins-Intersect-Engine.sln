@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersect.Server.Framework"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersect.Server.Core", "..\Intersect-Engine\Intersect.Server.Core\Intersect.Server.Core.csproj", "{0342D0BA-0B05-4A8A-B956-9984651C4ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersect.Core", "..\Intersect-Engine\Intersect (Core)\Intersect.Core.csproj", "{F5CD6951-4E69-40D2-A294-9639452C4DAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{0342D0BA-0B05-4A8A-B956-9984651C4ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0342D0BA-0B05-4A8A-B956-9984651C4ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0342D0BA-0B05-4A8A-B956-9984651C4ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5CD6951-4E69-40D2-A294-9639452C4DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5CD6951-4E69-40D2-A294-9639452C4DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5CD6951-4E69-40D2-A294-9639452C4DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5CD6951-4E69-40D2-A294-9639452C4DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

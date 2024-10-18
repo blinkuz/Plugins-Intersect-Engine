@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Rare_Item_Drop_Notifier
-build_property.ProjectDir = /Users/kationinteractive/Documents/Bryan/Plugins-Intersect-Engine/Rare-Item-Drop-Notifier/
+build_property.ProjectDir = C:\Users\Blinkuz\Desktop\Game Dev\Plugins-Intersect-Engine\Rare-Item-Drop-Notifier\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

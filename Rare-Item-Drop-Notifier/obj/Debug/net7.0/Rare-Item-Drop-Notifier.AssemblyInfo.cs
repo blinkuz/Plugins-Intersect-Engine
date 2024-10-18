@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rare-Item-Drop-Notifier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26646e750ba2dee55cf22312e28a0ae72c12df82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d5e0418479a63af8a94bfdcc86b33e70dc64e1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rare-Item-Drop-Notifier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rare-Item-Drop-Notifier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

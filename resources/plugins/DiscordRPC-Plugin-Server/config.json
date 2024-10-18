@@ -1,0 +1,14 @@
+﻿{
+  "DiscordClientId": "",
+  "DetailsTemplate": "Name:{Name}|Level:{Level}|{Map}",
+  "StateTemplate": "Class: {Class}",
+  "Button1Label": "Join Game",
+  "Button1Url": "https://yourgameurl.com/join",
+  "Button2Label": "Visit Website",
+  "Button2Url": "https://yourwebsite.com",
+  "LargeImageKey": "ImageUrl.png",
+  "LargeImageText": "Naruto Hover Text",
+  "SmallImageKey": "small_image_key",
+  "SmallImageText": "Small Image Text",
+  "IsEnabled": true
+}
