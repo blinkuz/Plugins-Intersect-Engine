@@ -7,14 +7,11 @@ public class PluginSettings: PluginConfiguration
 {
     public static PluginSettings Settings { get; set; }
     
-    public List<string> RarityNotifications { get; set; } = new List<string>
-    {
-        @"Rare",
-        @"Epic",
-        @"Legendary",
-    };
+    public List<string> RarityNotifications { get; set; }
+
+    public string TextMessage { get; set; } = "";
     
-    public string TextMessage { get; set; } = "{player} has found a {item}";
+    public string NotificationColor { get; set; } = "";
     
     [OnDeserialized]
     internal void OnDeserializedMethod(StreamingContext context)

@@ -1,40 +1,57 @@
-using Blinkuz.Plugins.Tools.Logging;
-using Intersect.Network.Packets.Client;
+using Intersect;
 using Intersect.Plugins;
+using Intersect.Server.Entities;
+using Intersect.Server.Framework.Items;
+using Intersect.Server.Networking;
 using Intersect.Server.Plugins;
 using Rare_Item_Drop_Notifier.Configuration;
-using Rare_Item_Drop_Notifier.Networking.Hooks;
+using Rare_Item_Drop_Notifier.Logging;
 
-namespace Rare_Item_Drop_Notifier;
-
-public class PluginEntry: ServerPluginEntry
+namespace Rare_Item_Drop_Notifier
 {
-    public override void OnBootstrap(IPluginBootstrapContext context)
+    public class PluginEntry : ServerPluginEntry
     {
-        base.OnBootstrap(context);
-        Logger.Context = context;
-        Logger.WriteToConsole = true;
-        PluginSettings.Settings = context.GetTypedConfiguration<PluginSettings>();
-        
-        Logger.Write(LogLevel.Info, String.Format("Version : {0}", context.Manifest.Version));
-        Logger.Write(LogLevel.Info, String.Format("Author  : {0}", context.Manifest.Authors));
-        Logger.Write(LogLevel.Info, String.Format("Homepage: {0}", context.Manifest.Homepage));
-        
-        Logger.Write(LogLevel.Info, "Registering post hooks...");
-        if (!context.Packet.TryRegisterPacketPostHook<PickupItemPacketPostHook, PickupItemPacket>(out _))
+        public override void OnBootstrap(IPluginBootstrapContext context)
         {
-            Logger.Write(LogLevel.Warning, $"Failed to register {nameof(PickupItemPacket)} packet post hook.");
-            Environment.Exit(-5);
+            base.OnBootstrap(context);
+            PluginSettings.Settings = context.GetTypedConfiguration<PluginSettings>();
+            Logger.Context = context;
         }
-    }
-    
-    public override void OnStart(IServerPluginContext context)
-    {
-       
-    }
 
-    public override void OnStop(IServerPluginContext context)
-    {
-        
+        public override void OnStart(IServerPluginContext context)
+        {
+            Logger.Write(LogLevel.Info, "Rare Item Drop Notifier loaded.");
+            context.MapHelper.ItemAdded += OnItemDrop;
+        }
+
+        private void OnItemDrop(IItemSource? source, IItem item)
+        {
+            if (PluginSettings.Settings.RarityNotifications.Contains(Options.Instance.Items.RarityTiers[item.Descriptor.Rarity]))
+            {
+                if (source is EntityItemSource { EntityReference: { } } entitySource &&
+                    entitySource.EntityReference.TryGetTarget(out var entity) && entity is Entity entityInstance)
+                {
+                    var mapName = entityInstance.MapName;
+                    var itemName = item.ItemName;
+                    var rarityName = Options.Instance.Items.RarityTiers[item.Descriptor.Rarity];
+                    var dropChance = item.DropChance;
+
+                    var messageTemplate = PluginSettings.Settings.TextMessage;
+                    var message = messageTemplate
+                        .Replace("{item}", itemName)
+                        .Replace("{rarity}", rarityName)
+                        .Replace("{dropChance}", dropChance.ToString())
+                        .Replace("{entity}", entity.Name ?? "Unknown")
+                        .Replace("{map}", mapName);
+
+                    var color = Color.FromString(PluginSettings.Settings.NotificationColor, Color.Green);
+                    PacketSender.SendGlobalMsg(message, color, string.Empty);
+                }
+            }
+        }
+
+        public override void OnStop(IServerPluginContext context)
+        {
+        }
     }
 }
