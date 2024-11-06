@@ -28,9 +28,10 @@ namespace Rare_Item_Drop_Notifier
         {
             if (PluginSettings.Settings.RarityNotifications.Contains(Options.Instance.Items.RarityTiers[item.Descriptor.Rarity]))
             {
-                if (source is EntityItemSource { EntityReference: { } } entitySource &&
-                    entitySource.EntityReference.TryGetTarget(out var entity) && entity is Entity entityInstance)
+                if (source is EntityItemSource { EntityReference: not null } entitySource &&
+                    entitySource.EntityReference.TryGetTarget(out var entity) && entity is not Player)
                 {
+                    var entityInstance = (Entity)entity;
                     var mapName = entityInstance.MapName;
                     var itemName = item.ItemName;
                     var rarityName = Options.Instance.Items.RarityTiers[item.Descriptor.Rarity];
